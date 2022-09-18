@@ -1,13 +1,9 @@
 import 'package:coffee_app_ui/Lists/lists.dart';
-import 'package:coffee_app_ui/screens/home/coffee_screen/coffee_screen.dart';
 import 'package:coffee_app_ui/colors/colors.dart';
-import 'package:coffee_app_ui/constant/constant.dart';
 import 'package:coffee_app_ui/screens/favourite_screen/favourit_screen.dart';
 import 'package:coffee_app_ui/screens/home_screen/home_screen.dart';
-import 'package:coffee_app_ui/shared/navigator.dart';
-import 'package:coffee_app_ui/util/coffee_card.dart';
-import 'package:coffee_app_ui/util/coffee_type.dart';
-import 'package:coffee_app_ui/util/search_bar.dart';
+
+
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {

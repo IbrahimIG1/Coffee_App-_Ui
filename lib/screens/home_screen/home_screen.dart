@@ -1,14 +1,12 @@
 import 'package:coffee_app_ui/Lists/lists.dart';
 import 'package:coffee_app_ui/screens/home/coffee_screen/coffee_screen.dart';
 import 'package:coffee_app_ui/colors/colors.dart';
-import 'package:coffee_app_ui/constant/constant.dart';
-import 'package:coffee_app_ui/screens/favourite_screen/favourit_screen.dart';
 import 'package:coffee_app_ui/shared/navigator.dart';
 import 'package:coffee_app_ui/util/coffee_card.dart';
 import 'package:coffee_app_ui/util/coffee_type.dart';
 import 'package:coffee_app_ui/util/search_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
@@ -42,7 +40,7 @@ class _HomeState extends State<HomeScreen> {
               children: [
                 Text(
                   'Find the best \ncoffee for you',
-                  style: GoogleFonts.bebasNeue(fontSize: 40),
+                  style:TextStyle(fontFamily: 'BebasNeue',fontSize: 40)
                 ),
                 SizedBox(
                   height: 40,

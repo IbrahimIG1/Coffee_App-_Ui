@@ -1,7 +1,6 @@
 import 'package:coffee_app_ui/colors/colors.dart';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 Widget buttonArrowBack({
   required IconData icon,
@@ -56,13 +55,13 @@ Widget coffeeNameAndRate({
     Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(name, style: GoogleFonts.aclonica(fontSize: 22)),
+        Text(name, style: TextStyle(fontFamily: 'Aclonica',fontSize: 22)),
         SizedBox(
           height: 5,
         ),
         Text(
           caption,
-          style: GoogleFonts.aclonica(fontSize: 15, color: captionColor),
+          style: TextStyle(fontFamily: 'Aclonica',fontSize: 15,color: captionColor),
         ),
         SizedBox(
           height: 15,
@@ -78,7 +77,7 @@ Widget coffeeNameAndRate({
             ),
             Text(
               price.toString(),
-              style: GoogleFonts.aclonica(fontSize: 15, color: captionColor),
+              style: TextStyle(fontFamily: 'Aclonica',fontSize: 15,color: captionColor)
             ),
           ],
         ),
@@ -97,13 +96,13 @@ Widget favItem({
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(name, style: GoogleFonts.aclonica(fontSize: 22)),
+            Text(name, style: TextStyle(fontFamily: 'Aclonica',fontSize: 22)),
             SizedBox(
               height: 10,
             ),
             Text(
               caption,
-              style: GoogleFonts.aclonica(fontSize: 15, color: captionColor),
+              style: TextStyle(fontFamily: 'Aclonica',fontSize: 15,color: captionColor),
             ),
           ],
         ),
@@ -118,7 +117,7 @@ Widget favItem({
             ),
             Text(
               price.toString(),
-              style: GoogleFonts.aclonica(fontSize: 15, color: captionColor),
+              style: TextStyle(fontFamily: 'Aclonica',fontSize: 15,color: captionColor),
             ),
           ],
         ),
