@@ -1,4 +1,7 @@
 import 'package:coffee_app_ui/Lists/lists.dart';
+import 'package:coffee_app_ui/coffee_screen/coffee_screen.dart';
+import 'package:coffee_app_ui/colors/colors.dart';
+import 'package:coffee_app_ui/shared/navigator.dart';
 import 'package:coffee_app_ui/util/coffee_card.dart';
 import 'package:coffee_app_ui/util/coffee_type.dart';
 import 'package:coffee_app_ui/util/search_bar.dart';
@@ -23,6 +26,13 @@ class _HomeState extends State<Home> {
     });
   }
 
+  int currentIndex =0;
+  void changeNavBar(index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +40,10 @@ class _HomeState extends State<Home> {
             elevation: 0,
             backgroundColor: Colors.black54.withOpacity(.2),
             iconSize: 25,
+            currentIndex: currentIndex,
+            onTap: (index) {
+              changeNavBar(index);
+            },
             items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
@@ -44,7 +58,7 @@ class _HomeState extends State<Home> {
                 label: '',
               ),
             ]),
-        backgroundColor: Color(0xff171413),
+        backgroundColor: buttonColor,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           leading: Icon(Icons.menu),
@@ -99,11 +113,25 @@ class _HomeState extends State<Home> {
                   child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        return CoffeeCard(
-                          image: coffee[index]['image'],
-                          name: coffee[index]['name'],
-                          caption: coffee[index]['caption'],
-                          price: coffee[index]['price'],
+                        return InkWell(
+                          onTap: () {
+                            navigateTo(
+                                context,
+                                CoffeeScreen(
+                                  image: coffee[index]['image'],
+                                  name: coffee[index]['name'],
+                                  caption: coffee[index]['caption'],
+                                  captionDetails: coffee[index]
+                                      ['caption_details'],
+                                  price: coffee[index]['price'],
+                                ));
+                          },
+                          child: CoffeeCard(
+                            image: coffee[index]['image'],
+                            name: coffee[index]['name'],
+                            caption: coffee[index]['caption'],
+                            price: coffee[index]['price'],
+                          ),
                         );
                       },
                       separatorBuilder: (context, index) => SizedBox(

@@ -1,4 +1,5 @@
 import 'package:coffee_app_ui/Lists/lists.dart';
+import 'package:coffee_app_ui/colors/colors.dart';
 import 'package:flutter/material.dart';
 
 class CoffeeCard extends StatelessWidget {
@@ -62,13 +63,13 @@ class CoffeeCard extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .caption!
-                  .copyWith(color: Colors.grey),
+                  .copyWith(color: captionColor),
             ),
             SizedBox(
               height: 5,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 RichText(
                     text: TextSpan(
@@ -76,23 +77,22 @@ class CoffeeCard extends StatelessWidget {
                         children: [
                           TextSpan(
                               text: ' $price',
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15))
                         ],
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.orange,
                             fontWeight: FontWeight.bold,
                             fontSize: 15))),
                 InkWell(
-                  onTap: () {
-                    print(coffee[0]);
-                  },
+                  onTap: () {},
                   child: Container(
+                    padding: EdgeInsets.all(1),
                     decoration: BoxDecoration(
                         color: Colors.orange,
-                        borderRadius: BorderRadius.circular(20)),
+                        borderRadius: BorderRadius.circular(10)),
                     child: Icon(Icons.add),
                   ),
                 )
