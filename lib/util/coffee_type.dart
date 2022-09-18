@@ -16,13 +16,16 @@ class CoffeeType extends StatelessWidget {
           onTap();
         },
         child: Column(
+          
           children: [
-            Text(
-              "${coffeeType}",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: isSelect ? Colors.orange : Colors.white,
-                fontSize: 18,
+            Container(
+              child: Text(
+                "${coffeeType}",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: isSelect ? Colors.orange : Colors.white,
+                  fontSize: 18,
+                ),
               ),
             ),
             if (isSelect)

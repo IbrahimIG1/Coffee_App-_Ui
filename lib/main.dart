@@ -13,6 +13,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Home(),
-        theme: ThemeData(brightness: Brightness.dark));
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          primarySwatch: Colors.orange,
+          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            selectedIconTheme: IconThemeData(color: Colors.orange),
+          ),
+        ));
   }
 }

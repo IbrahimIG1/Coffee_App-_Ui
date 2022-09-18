@@ -1,3 +1,5 @@
+import 'package:coffee_app_ui/Lists/lists.dart';
+import 'package:coffee_app_ui/util/coffee_card.dart';
 import 'package:coffee_app_ui/util/coffee_type.dart';
 import 'package:coffee_app_ui/util/search_bar.dart';
 import 'package:flutter/material.dart';
@@ -11,42 +13,37 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List coffeeList = [
-    [
-      'Cappuccino',
-      true,
-    ],
-    [
-      'Espresso',
-      false,
-    ],
-    [
-      'Dark',
-      false,
-    ],
-    [
-      'Late',
-      false,
-    ],
-    [
-      'Bondock',
-      false,
-    ],
-  ];
-
   // User Select cofee type
   void typeSelect({required index}) {
     setState(() {
-      for (int i = 0; i < coffeeList.length; i++) {
-        coffeeList[i][1] = false;
+      for (int i = 0; i < coffee.length; i++) {
+        coffee[i]['selected'] = false;
       }
-      coffeeList[index][1] = true;
+      coffee[index]['selected'] = true;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+            elevation: 0,
+            backgroundColor: Colors.black54.withOpacity(.2),
+            iconSize: 25,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.favorite),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.notifications),
+                label: '',
+              ),
+            ]),
         backgroundColor: Color(0xff171413),
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -64,39 +61,58 @@ class _HomeState extends State<Home> {
           ],
           elevation: 0,
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Find the best \ncoffee for you',
-                style: GoogleFonts.bebasNeue(fontSize: 40),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              SearchBar(),
-              SizedBox(
-                height: 40,
-              ),
-              Container(
-                height: 60,
-                child: ListView.builder(
-                  itemCount: coffeeList.length,
-                  itemBuilder: (context, index) {
-                    return CoffeeType(
-                      onTap: () {
-                        typeSelect(index: index);
-                      },
-                      coffeeType: coffeeList[index][0],
-                      isSelect: coffeeList[index][1],
-                    );
-                  },
-                  scrollDirection: Axis.horizontal,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Find the best \ncoffee for you',
+                  style: GoogleFonts.bebasNeue(fontSize: 40),
                 ),
-              )
-            ],
+                SizedBox(
+                  height: 40,
+                ),
+                SearchBar(),
+                SizedBox(
+                  height: 40,
+                ),
+                Container(
+                  height: 60,
+                  child: ListView.builder(
+                    itemCount: coffee.length,
+                    itemBuilder: (context, index) {
+                      return CoffeeType(
+                        onTap: () {
+                          typeSelect(index: index);
+                        },
+                        coffeeType: coffee[index]['name'],
+                        isSelect: coffee[index]['selected'],
+                      );
+                    },
+                    scrollDirection: Axis.horizontal,
+                  ),
+                ),
+                Container(
+                  height: 250,
+                  child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return CoffeeCard(
+                          image: coffee[index]['image'],
+                          name: coffee[index]['name'],
+                          caption: coffee[index]['caption'],
+                          price: coffee[index]['price'],
+                        );
+                      },
+                      separatorBuilder: (context, index) => SizedBox(
+                            width: 20,
+                          ),
+                      itemCount: coffee.length),
+                )
+              ],
+            ),
           ),
         ));
   }

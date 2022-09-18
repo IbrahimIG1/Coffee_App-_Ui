@@ -5,17 +5,13 @@ class SearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: Colors.grey[600]!)),
-      child: const TextField(
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: 'Find Your Coffee...',
-          prefixIcon: Icon(Icons.search),
-        ),
+    return const TextField(
+      // clipBehavior: Clip.antiAliasWithSaveLayer,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(25))),
+        hintText: 'Find Your Coffee...',
+        prefixIcon: Icon(Icons.search),
       ),
     );
   }
