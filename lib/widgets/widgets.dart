@@ -3,18 +3,46 @@ import 'package:coffee_app_ui/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+Widget buttonArrowBack({
+  required IconData icon,
+  required Function onTap,
+}) =>
+    InkWell(
+      onTap: () {
+        onTap();
+      },
+      child: Container(
+        decoration: BoxDecoration(
+            color: buttonColor, borderRadius: BorderRadius.circular(15)),
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Icon(
+            icon,
+            size: 25,
+            color: Colors.grey,
+          ),
+        ),
+      ),
+    );
 Widget buttonIconFavorite({
   required IconData icon,
+  required Function onTap,
+  required bool selected,
 }) =>
-    Container(
-      decoration: BoxDecoration(
-          color: buttonColor, borderRadius: BorderRadius.circular(15)),
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Icon(
-          icon,
-          size: 25,
-          color: Colors.grey,
+    InkWell(
+      onTap: () {
+        onTap();
+      },
+      child: Container(
+        decoration: BoxDecoration(
+            color: buttonColor, borderRadius: BorderRadius.circular(15)),
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Icon(
+            icon,
+            size: 25,
+            color: selected ? Colors.red : Colors.grey,
+          ),
         ),
       ),
     );
@@ -56,6 +84,47 @@ Widget coffeeNameAndRate({
         ),
       ],
     );
+
+Widget favItem({
+  required BuildContext context,
+  required String name,
+  required String caption,
+  required String price,
+}) =>
+    Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(name, style: GoogleFonts.aclonica(fontSize: 22)),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              caption,
+              style: GoogleFonts.aclonica(fontSize: 15, color: captionColor),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Icon(
+              Icons.star,
+              color: Colors.amber,
+            ),
+            SizedBox(
+              width: 5,
+            ),
+            Text(
+              price.toString(),
+              style: GoogleFonts.aclonica(fontSize: 15, color: captionColor),
+            ),
+          ],
+        ),
+      ],
+    );
+
 Widget buttonCoffeeMilk({
   required IconData icon,
 }) =>

@@ -10,12 +10,14 @@ class CoffeeScreen extends StatefulWidget {
       required this.name,
       required this.caption,
       required this.price,
-      required this.captionDetails});
+      required this.captionDetails,
+      required this.index});
   final String image;
   final String name;
   final String caption;
   final String captionDetails;
   final double price;
+  final int index;
 
   @override
   State<CoffeeScreen> createState() => _CoffeeScreenState();
@@ -40,7 +42,8 @@ class _CoffeeScreenState extends State<CoffeeScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start, children: [
             Stack(children: [
               Container(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -61,17 +64,25 @@ class _CoffeeScreenState extends State<CoffeeScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: buttonIconFavorite(
+                        buttonArrowBack(
                             icon: Icons.arrow_back_ios,
-                          ),
-                        ),
+                            onTap: () {
+                              Navigator.pop(context);
+                            }),
                         buttonIconFavorite(
-                          icon: Icons.favorite,
-                        )
+                            selected: coffee[widget.index]['favourite'],
+                            icon: Icons.favorite,
+                            onTap: () {
+                              setState(() {
+                                coffee[widget.index]['favourite'] =
+                                    !coffee[widget.index]['favourite'];
+                                if (coffee[widget.index]['favourite']) {
+                                  favCoffee.add(coffee[widget.index]);
+                                } else {
+                                  favCoffee.remove(coffee[widget.index]);
+                                }
+                              });
+                            })
                       ],
                     ),
                   ),
@@ -174,26 +185,6 @@ class _CoffeeScreenState extends State<CoffeeScreen> {
                       itemCount: coffeeSize.length,
                     ),
                   ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  //   children: [
-                  //     buttonCupSize(
-                  //         size: 'S', onTap: () {}, color: Colors.orange),
-                  //     SizedBox(
-                  //       width: 15,
-                  //     ),
-                  //     buttonCupSize(
-                  //         size: 'M', onTap: () {}, color: Color(0xff)),
-                  //     SizedBox(
-                  //       width: 15,
-                  //     ),
-                  //     buttonCupSize(
-                  //       size: 'L',
-                  //       onTap: () {},
-                  //       color: Color(0xff),
-                  //     ),
-                  //   ],
-                  // ),
                   SizedBox(
                     height: 30,
                   ),

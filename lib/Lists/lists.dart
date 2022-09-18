@@ -1,6 +1,7 @@
 List<Map> coffee = [
   {
     'name': 'Cappuccino',
+    'favourite': false,
     'caption': 'With Oat Milk',
     'selected': true,
     'image': 'assets/images/capitcino.jpg',
@@ -10,6 +11,7 @@ List<Map> coffee = [
   },
   {
     'name': 'Espresso',
+    'favourite': false,
     'caption': 'More Suger Ya Suger',
     'selected': false,
     'image': 'assets/images/black.jpg',
@@ -19,6 +21,7 @@ List<Map> coffee = [
   },
   {
     'name': 'Dark',
+    'favourite': false,
     'caption': 'With Out Coffee',
     'selected': false,
     'image': 'assets/images/dark.jpg',
@@ -28,6 +31,7 @@ List<Map> coffee = [
   },
   {
     'name': 'Late',
+    'favourite': false,
     'caption': 'With More Milk',
     'selected': false,
     'image': 'assets/images/late.jpg',
@@ -37,6 +41,7 @@ List<Map> coffee = [
   },
   {
     'name': 'Bondock',
+    'favourite': false,
     'caption': 'With Out Suger',
     'selected': false,
     'image': 'assets/images/bondock.jpg',
@@ -59,3 +64,5 @@ List coffeeSize =
     'selected' : false,
   }
 ];
+  List favCoffee = [];
+
